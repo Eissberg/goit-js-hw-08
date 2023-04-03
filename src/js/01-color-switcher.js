@@ -6,8 +6,11 @@ const btnStart = document.querySelector('[data-start]');
 const btnStop = document.querySelector('[data-stop]');
 let timerChangeColor;
 
+btnStop.disabled = true;
+
 btnStart.addEventListener('click', () => {
   btnStart.disabled = true;
+  btnStop.disabled = false;
   timerChangeColor = setTimeout(function tick() {
     document.body.style.backgroundColor = getRandomHexColor();
     timerChangeColor = setTimeout(tick, 1000);
@@ -16,6 +19,6 @@ btnStart.addEventListener('click', () => {
 
 btnStop.addEventListener('click', () => {
   btnStart.disabled = false;
-  document.body.style.backgroundColor = '#fafafa';
+  btnStop.disabled = true;
   clearTimeout(timerChangeColor);
 });
